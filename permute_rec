@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int>v;
+bool b[10];
+
+void permute(int n, int k) {
+  if(k==n){
+    for(auto e:v){
+      cout<<e;
+    }
+    cout<<'\n';
+    return;
+  } 
+  for(int i=1;i<=n;i++){
+    if(b[i]==0){
+      b[i]=1;
+      v.push_back(i);
+      permute(n,k+1);
+      b[i]=0;
+      v.pop_back();
+    }
+  }
+}
+
+int main() {
+    int d;
+    while (cin >> d) {
+        permute(d,0);
+    }
+    return 0;
+}
